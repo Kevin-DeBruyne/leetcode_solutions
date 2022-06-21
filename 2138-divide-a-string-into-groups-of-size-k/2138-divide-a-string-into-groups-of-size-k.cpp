@@ -12,15 +12,6 @@ public:
                 res.push_back(temp);
             }
         }
-//         else if(n<k){
-//             int less=k-n;
-//             for(int i=0;i<less;i++){
-//                s.push_back(fill);
-//             }
-//             res.push_back(s);
-            
-
-//         }
         else{
             int less=k-(n%k);
             for(int i=0;i<less;i++){
