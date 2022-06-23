@@ -9,8 +9,6 @@ public:
             pre=max(pre,items[i][1]);
             items[i][1]=pre;
         } 
-     for(auto i:items)
-            cout<<i[0]<<" "<<i[1]<<endl;
         vector<int>ans;
         for(int i=0;i<queries.size();i++){
             int low=0;
