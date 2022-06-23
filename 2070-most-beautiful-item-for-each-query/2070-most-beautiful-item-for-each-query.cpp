@@ -15,7 +15,7 @@ public:
             int high=n-1;
             int temp=0;
             while(low<=high){
-                int mid=low+(high-low)/2;
+                int mid=(low+high)/2;
                 if(items[mid][0]<=queries[i]){
                     temp=items[mid][1];
                     low=mid+1;
@@ -23,9 +23,6 @@ public:
                 else if(items[mid][0]>queries[i]){
                     high=mid-1;
                 }
-                // else{
-                //     low=mid+1;
-                // }
             }
             ans.push_back(temp);
         }
