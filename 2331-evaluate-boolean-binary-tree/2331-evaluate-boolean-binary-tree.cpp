@@ -17,9 +17,6 @@ public:
         }
         bool l=evaluateTree(root->left);
         bool r=evaluateTree(root->right);
-        // if(l==0 || l==1){
-        //     return l;
-        // }
         if(root->val==2)
             return l || r;
         if(root->val==3)
