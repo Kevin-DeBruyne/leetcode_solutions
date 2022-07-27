@@ -16,7 +16,7 @@ public:
             for(int j=0;j<n;j++){
                 temp.push_back(grid[j][i]);
             }
-            if(mp.find(temp)!=mp.end()){
+            if(mp.count(temp)){
                 
                 count+=mp[temp];
             }
