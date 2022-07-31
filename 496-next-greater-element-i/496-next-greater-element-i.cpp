@@ -11,15 +11,16 @@ public:
                 st.push(nums2[i]);
                 i++;
             }
-            else if(nums2[i]>st.top()){
-                while(!st.empty() && nums2[i]>st.top()){
-                    mp[st.top()]=nums2[i];
-                    st.pop();                        
-                }
+            
+            else if(nums2[i]<st.top()){
                 st.push(nums2[i]);
                 i++;
             }
             else{
+                while(!st.empty() && nums2[i]>st.top()){
+                    mp[st.top()]=nums2[i];
+                    st.pop();                        
+                }
                 st.push(nums2[i]);
                 i++;
             }
