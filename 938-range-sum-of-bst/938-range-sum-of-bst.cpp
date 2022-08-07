@@ -12,19 +12,15 @@
 class Solution {
 public:
     int count=0;
-    void pre(TreeNode* root, int low, int high){
+    int rangeSumBST(TreeNode* root, int low, int high) {
         if(root==NULL){
-            return;
+            return count;
         }
         if(root->val>=low && root->val<=high){
             count+=root->val;
         }
-        pre(root->left, low, high);
-        pre(root->right, low, high);
-        
-    }
-    int rangeSumBST(TreeNode* root, int low, int high) {
-        pre(root,low,high);
+        rangeSumBST(root->left, low, high);
+        rangeSumBST(root->right, low, high);    
         return count;
     }
 };
