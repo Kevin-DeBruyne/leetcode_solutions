@@ -10,25 +10,16 @@
 
 class Solution {
 public:
-    vector<TreeNode*>vec;
-    void pre(TreeNode* root, TreeNode* target){
-        if(root==NULL){
-            return;
-        }
-        vec.push_back(root);
-        pre(root->left, target);
-        pre(root->right, target);
-        
-        
-    }
+    TreeNode* ans;
     TreeNode* getTargetCopy(TreeNode* original, TreeNode* cloned, TreeNode* target) {
-        pre(cloned,target);
-        for(auto x:vec){
-            if(x->val==target->val){
-                return x;
-            }
+        if(cloned==NULL){
+            return NULL;
+        }        
+        if(cloned->val==target->val){
+            ans=cloned;
         }
-        return NULL;
-        
+        getTargetCopy(original, cloned->left, target);
+        getTargetCopy(original, cloned->right, target);
+        return ans;
     }
 };
