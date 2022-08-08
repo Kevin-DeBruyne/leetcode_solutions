@@ -1,15 +1,19 @@
 class Solution {
 public:
     int arithmeticTriplets(vector<int>& nums, int diff) {
-        int n=nums.size();
-        int count=0;
-        int cnt[201]={};
-        for(auto x:nums){
-            if(x>=2*diff){
-                count+=cnt[x-diff]&&cnt[x-2*diff];
-            }
-            cnt[x]=true;
+int count=0;
+int n= nums.size();
+unordered_set<int> s;
+
+    for(int i=0;i<n;i++)
+    {
+        s.insert(nums[i]);
+        for(int j=i+1;j<n;j++)
+        {
+            if(nums[j]-nums[i]==diff && s.find(nums[i]-diff)!=s.end())
+                count++;
         }
-        return count;
     }
+    return count;
+	}
 };
