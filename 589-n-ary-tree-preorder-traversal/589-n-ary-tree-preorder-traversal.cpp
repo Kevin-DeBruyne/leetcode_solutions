@@ -20,21 +20,22 @@ public:
 
 class Solution {
 public:
+    stack<Node*>st;
     vector<int>vec;
-    void trav(Node* root) {
-        if(root==NULL){
-            return;
-        }
-        vec.push_back(root->val);
-        for(auto x:root->children){
-            trav(x);
-        }
-    }
     vector<int> preorder(Node* root) {
         if(root==NULL){
             return vec;
         }
-        trav(root);
+        st.push(root);
+        while(!st.empty()){
+            int temp=st.top()->val;
+            Node* p=st.top();
+            st.pop();
+            vec.push_back(temp);
+            for (auto it =  p->children.rbegin(); it != p->children.rend(); ++it){
+                st.push(*it);
+            }
+        }
         return vec;
     }
 };
