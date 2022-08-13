@@ -10,28 +10,33 @@
  */
 class Solution {
 public:
+    ListNode* rev(ListNode* head){
+        if(head==NULL||!head->next){
+            return  head;
+        }
+        ListNode* temp=head->next;
+        ListNode* root=rev(head->next);
+        head->next=NULL;
+        temp->next=head;
+        return root;
+        
+    } 
     int pairSum(ListNode* head) {
-        if(!head){
-            return NULL;
-        }
-        vector<int>vec;
-        ListNode* curr=head;
-        while(head){
-            vec.push_back(head->val);
-            head=head->next;
-        }
-        reverse(vec.begin(), vec.end());
-        for(auto x:vec){
-            cout<<x<<" ";
-        }
-        cout<<endl;
         int sum=0;
-        int i=0;
-        while(curr && i<vec.size()){
-            sum=max(sum, curr->val+vec[i]);
-            i++;
-            curr=curr->next;
+        ListNode* slow=head;
+        ListNode* fast=head;
+        while(fast && fast->next){
+            fast=fast->next->next;
+            slow=slow->next;
+        }
+        ListNode* mid=rev(slow);
+        while(mid){
+            sum=max(sum,mid->val+head->val);
+            mid=mid->next;
+            head=head->next;
         }
         return sum;
     }
+    
+    
 };
