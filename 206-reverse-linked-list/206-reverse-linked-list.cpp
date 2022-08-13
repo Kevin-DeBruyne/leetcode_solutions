@@ -14,10 +14,10 @@ public:
         if(!head || !head->next){
             return head;
         }
+        ListNode* temp=head->next;
         ListNode* root=reverseList(head->next);
-        ListNode* t=head->next;
         head->next=NULL;
-        t->next=head;
+        temp->next=head;
         return root;
     }
 };
