@@ -14,8 +14,8 @@ public:
         if(!head || !head->next){
             return head;
         }
-        ListNode* temp=head->next;
         ListNode* root=reverseList(head->next);
+        ListNode* temp=head->next;
         head->next=NULL;
         temp->next=head;
         return root;
