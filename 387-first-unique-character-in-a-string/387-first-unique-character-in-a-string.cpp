@@ -10,7 +10,7 @@ public:
         }
         int cnt=0;
         for(auto x:s){
-            if(arr[int(x)-97]==1){
+            if(arr[x-97]==1){
                 return cnt;
             }
             cnt++;
