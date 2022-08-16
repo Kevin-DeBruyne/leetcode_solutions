@@ -3,7 +3,7 @@ public:
     int firstUniqChar(string s) {
         int arr[26]={0};
         for(int i=0;i<s.size();i++){
-            arr[int(s[i])-97]++;
+            arr[s[i]-97]++;
         }
         for(auto x:arr){
             cout<<x<<" ";
