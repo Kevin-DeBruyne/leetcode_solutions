@@ -13,20 +13,22 @@ public:
     ListNode* removeElements(ListNode* head, int val) {
         ListNode* dummy=new ListNode();
         dummy->next=head;
-        ListNode* prev=dummy;
-        ListNode* curr=head;
-
+        ListNode* curr=new ListNode();
+        curr=head;
+        ListNode* prev=new ListNode();
+        prev=dummy;
         while(curr){
             ListNode* temp=curr->next;
             if(curr->val==val){
                 prev->next=temp;
-                
             }
             else{
                 prev=curr;
             }
             curr=temp;
+            
         }
         return dummy->next;
+        
     }
 };
