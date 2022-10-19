@@ -4,23 +4,18 @@ public:
     long long interchangeableRectangles(vector<vector<int>>& rectangles) 
     
     {
-         int n = rectangles.size();
-        unordered_map<double, double> mp;
-        long long result = 0;
-        
-        //I am going from (n-1) to 0 so that I am aware of the ratios which
-		//occurred after current index i
-        for(int i = 0; i < n; i++) {
-            double ratio = (double)rectangles[i][0]/(double)rectangles[i][1];
-            
-            //Have I seen this ratio
-            if(mp.find(ratio) != end(mp))
-                result += mp[ratio];
+	long long result = 0;
+	map<pair<int, int>, int> mp;
 
-            //Increase the ratio count
-            mp[ratio]++;
-        }
-        return result;
-    }
+	for (auto& rect : rectangles)
+	{
+		int gcd = __gcd(rect[0], rect[1]);
+		pair<int, int> key = {rect[0]/gcd, rect[1]/gcd};
+		if(mp.find(key) != mp.end()) result += mp[key];
+		mp[key]++;
+	}
+
+	return result;
+}
     
 };
