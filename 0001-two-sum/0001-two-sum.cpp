@@ -10,10 +10,8 @@ public:
                 vec.push_back(st[target-nums[i]]);
                 break;
             }
-            else{
                 st[nums[i]]=i;
             }
-        }
     return vec;
     }
 };
