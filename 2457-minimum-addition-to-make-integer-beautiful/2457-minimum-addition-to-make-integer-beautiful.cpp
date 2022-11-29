@@ -13,17 +13,13 @@ public:
         if(digit_sum(n)<=target){
             return 0;
         }
-        // n+=10-n%10;
         long long i=100;
         long long ans=0;
-        long long alt;
         n+=10-(n%10);
-        
         while(digit_sum(n)>target){
             ans+=i-(n%i);
             n+=i-(n%i);
             i*=10;
-            
         }
         ans+=10-(temp%10);
         return ans;
