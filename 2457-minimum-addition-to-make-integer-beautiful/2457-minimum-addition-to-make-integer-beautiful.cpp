@@ -20,12 +20,8 @@ public:
         n+=10-(n%10);
         
         while(digit_sum(n)>target){
-            cout<<n<<endl;
-            // long long x=n;
-            alt=(n%i);
-            cout<<i-alt<<" ";
-            ans+=i-alt;
-            n+=i-alt;
+            ans+=i-(n%i);
+            n+=i-(n%i);
             i*=10;
             
         }
