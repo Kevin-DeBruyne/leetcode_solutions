@@ -19,11 +19,6 @@ public:
         }
     }
     void reverseInGroups(vector<long long>& arr, int n, int k){
-        if(k>=n){
-            k=n;
-            reverse(arr.begin(), arr.end());
-            return;
-        }
         int i=0;
         int j=k-1;
         while(j<n){
