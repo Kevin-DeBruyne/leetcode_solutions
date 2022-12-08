@@ -1,12 +1,7 @@
 class Solution {
 public:
     bool canJump(vector<int>& nums) {
-        if(nums.size()==1){
-            return true;
-        }
-        if(nums[0]==0){
-            return false;
-        }
+        
         int curr=0;
         int reach=nums[curr];
         curr++;
