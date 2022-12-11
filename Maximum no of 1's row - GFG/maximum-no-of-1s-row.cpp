@@ -13,11 +13,8 @@ class Solution
             int res;
             for(int i=0;i<N;i++){
                 int temp=0;
-                for(int j=0;j<M;j++){
-                    if(Mat[i][j]){
-                        temp++;
-                    }
-                }
+                auto it=lower_bound(Mat[i].begin(), Mat[i].end(), 1);
+                temp=M-(it-Mat[i].begin());
                 if(temp>ans){
                     res=i;
                     ans=temp;
