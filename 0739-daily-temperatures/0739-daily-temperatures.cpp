@@ -3,10 +3,6 @@ public:
     vector<int> dailyTemperatures(vector<int>& temperatures) {
         stack<pair<int,int>>st;
         int n=temperatures.size();
-        // unordered_map<int,int>mp;
-        // for(int i=0;i<n;i++){
-        //     mp[temperatures[i]]=i;
-        // }
         vector<int>ans(n);
         int i=0;
         while(i<n){
@@ -20,7 +16,6 @@ public:
                 }
                     st.push(make_pair(temperatures[i],i));
             }
-            // mp[temperatures[i]]=i;
             i++;
         }
         while(!st.empty()){
