@@ -28,7 +28,7 @@ Explanation: </strong>The 4 subarrays are [-1&nbsp;-3&nbsp;4]
 You don't need to read input or print anything.&nbsp;Complete the<strong> </strong>function <strong>findSubarray()</strong>&nbsp;that takes the&nbsp;array arr&nbsp;and its size n&nbsp;as input parameters<strong>&nbsp;</strong>and returns the total number of sub-arrays with 0 sum.&nbsp;<br>
 &nbsp;</p>
 
-<p><strong>Expected Time Complexity</strong>: O(n)<br>
+<p><strong>Expected Time Complexity</strong>: O(n*log(n))<br>
 <strong>Expected Auxilliary Space</strong>: O(n)<br>
 &nbsp;</p>
 
