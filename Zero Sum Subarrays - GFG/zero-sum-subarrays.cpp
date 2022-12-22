@@ -7,24 +7,33 @@ using namespace std;
 
 // } Driver Code Ends
 //User function template for C++
+//User function template for C++
 
 class Solution{
 public:
     //Function to count subarrays with sum equal to 0.
     long long int findSubarray(vector<long long int> &arr, int n ) {
-        // vector<long long>pre;
+        vector<long long>pre;
+        int temp=0;
+        for(auto x:arr){
+            temp+=x;
+            pre.push_back(temp);
+        }
+        // for(auto x:pre){
+        //     cout<<x<<" ";
+        // }
+        // cout<<endl;
         unordered_map<long long,long long>mp;
         int cnt=0;
-        long long pre=0;
         for(int i=0;i<n;i++){
-            pre+=arr[i];
-            if(pre==0){
+            if(mp.find(pre[i])!=mp.end()){
+                cnt+=mp[pre[i]];
+            }
+            if(pre[i]==0){
                 cnt++;
             }
-            if(mp.find(pre)!=mp.end()){
-                cnt+=mp[pre];
-            }
-            mp[pre]++;
+            mp[pre[i]]++;   
+
         }
         return cnt;
     }
