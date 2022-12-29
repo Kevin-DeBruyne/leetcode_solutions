@@ -10,13 +10,13 @@ public:
 		
 	string removeDups(string S) 
 	{
-	    unordered_set<char>st;
+	    vector<bool>vec(26);
 	    string ans="";
 	    for(auto x:S){
-	        if(st.find(x)==st.end()){
+	        if(!vec[x-97]){
 	            ans+=x;
 	        }
-	        st.insert(x);
+	        vec[x-97]=true;
 	    }
 	    return ans;
 	}
