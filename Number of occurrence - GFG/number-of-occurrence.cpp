@@ -6,14 +6,14 @@ using namespace std;
 
 
 // } Driver Code Ends
+
 //User function template for C++
 class Solution{
 public:	
 	/* if x is present in arr[] then returns the count
 		of occurrences of x, otherwise returns 0. */
 	int count(int arr[], int n, int x) {
-	   // int n=arr.size();
-        int l1=0;
+	    int l1=0;
 	    int h1=n-1;
 	    bool is=false;
 	    while(l1<=h1){
@@ -57,21 +57,26 @@ public:
 	        int last=-10;
 	        while(l3<=h3){
 	            int mid3=(l3+h3)/2;
-                if(arr[mid3]>x){
-                    h3=mid3-1;
-                }
-                else if(arr[mid3]<x){
-                    l3=mid3+1;
-                }
-                else{
-                    if(mid3==n-1 || arr[mid3]!=arr[mid3+1]){
-                        last=mid3;
-                        break;
-                }
-                else{
-                    l3=mid3+1;
-                }
-            }
+	            if(x==arr[mid3]){
+	                if(mid3==n-1){
+	                    last=n-1;
+	                    break;
+	                }
+	                if(arr[mid3]!=arr[mid3+1]){
+	                    last=mid3;
+	                    break;
+	                }
+	                else{
+	                    l3=mid3+1;
+	                }
+	                
+	            }
+	            else if(x>arr[mid3]){
+	                l3=mid3+1;
+	            }
+	            else{
+	                h3=mid3-1;
+	            }
 	        }
 	       // cout<<first<<" "<<last<<endl;
 	        return last-first+1;
