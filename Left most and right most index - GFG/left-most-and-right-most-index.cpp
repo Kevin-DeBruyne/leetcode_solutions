@@ -54,14 +54,12 @@ class Solution
 	        int last=-10;
 	        while(l3<=h3){
 	            int mid3=(l3+h3)/2;
-                if(v[mid3]>x){
-                    h3=mid3-1;
-                }
-                else if(v[mid3]<x){
-                    l3=mid3+1;
-                }
-                else{
-                    if(mid3==n-1 || v[mid3]!=v[mid3+1]){
+                if(x==v[mid3]){
+                    if(mid3==n-1){
+                        last=n-1;
+                        break;
+                    }
+                    if(v[mid3]!=v[mid3+1]){
                         last=mid3;
                         break;
                 }
@@ -69,6 +67,13 @@ class Solution
                     l3=mid3+1;
                 }
             }
+                else if(v[mid3]>x){
+                    h3=mid3-1;
+                }
+                else if(v[mid3]<x){
+                    l3=mid3+1;
+                }
+                
 	        }
 	       // cout<<first<<" "<<last<<endl;
 	        return {first, last};
