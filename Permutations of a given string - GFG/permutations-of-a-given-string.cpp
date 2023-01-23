@@ -3,10 +3,12 @@
 using namespace std;
 
 // } Driver Code Ends
+
 class Solution
 {
 	public:
-	    void help(vector<string>&ans, string que, string asf){
+	    vector<string>ans;
+	    void help(string que, string asf){
 	        int n=que.size();
 	        if(que.size()==0){
 	            ans.push_back(asf);
@@ -17,13 +19,12 @@ class Solution
 	            string left=que.substr(0, i);
 	            string right=que.substr(i+1, n-(i));
 	            string roq=left+right;
-	            help(ans, roq, asf+ch);
+	            help(roq, asf+ch);
 	        }   
 	    }
 	    vector<string>find_permutation(string S)
 		{
-		    vector<string>ans;
-            help(ans, S, "");
+            help(S, "");
             set<string>st;
             for(auto x:ans){
                 st.insert(x);
@@ -35,6 +36,7 @@ class Solution
             return res;
 		}
 };
+
 
 
 
