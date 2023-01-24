@@ -32,7 +32,6 @@ class Solution {
 	    }
     vector<vector<int>> uniquePerms(vector<int> arr ,int n) {
             vector<int>asf;
-            sort(arr.begin(), arr.end());
             help(arr,asf);
             vector<vector<int>>res;
             // cout<<ans.size()<<endl;
