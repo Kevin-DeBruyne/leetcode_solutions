@@ -1,11 +1,12 @@
 class Solution {
 public:
-    vector<vector<int>> help(vector<int>& ques){
-        int n=ques.size();
+    vector<vector<int>>temp;
+    void help(vector<int>& ques, vector<int>& asf){
         if(ques.size()==0){
-            return {{}};
+            temp.push_back(asf);
+            return;
         }
-        vector<vector<int>>temp;
+        int n=ques.size();
         for(int i=0;i<ques.size();i++){
             int ch=ques[i];
             vector<int>roq;
@@ -14,15 +15,14 @@ public:
                     roq.push_back(ques[j]);
                 }
             }
-            vector<vector<int>> ans=help(roq);
-            for(auto x:ans){
-                x.push_back(ch);
-                temp.push_back(x);
-            }
+            vector<int>temp2=asf;
+            temp2.push_back(ch);
+            help(roq, temp2);
         }
-        return temp;
     }
     vector<vector<int>> permute(vector<int>& nums) {
-        return help(nums);
+        vector<int>vec{};
+        help(nums, vec);
+        return temp;
     }
 };
