@@ -27,13 +27,6 @@ public:
         vector<int>res2;
         dfs(root1, res1);
         dfs(root2, res2);
-        for(auto x:res1){
-            cout<<x<<" ";
-        }
-        cout<<endl;
-        for(auto x:res2){
-            cout<<x<<" ";
-        }
         return res1==res2;
     }
 };
