@@ -17,6 +17,7 @@ public:
         }
         if(!root->left && !root->right){
             res.push_back(root->val);
+            return;
         }
         dfs(root->left,res);
         dfs(root->right,res);
