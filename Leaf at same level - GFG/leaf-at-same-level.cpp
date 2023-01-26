@@ -99,12 +99,16 @@ struct Node
 class Solution{
   public:
     set<int>res;
+    bool is=true;
     void dfs(Node *root, int cnt){
         if(root==NULL){
             return;
         }
         if(!root->left && !root->right){
             res.insert(cnt);
+            if(res.size()>1){
+                is=false;
+            }
             return;
         }
         dfs(root->left, cnt+1);
@@ -113,10 +117,7 @@ class Solution{
     bool check(Node *root)
     {
         dfs(root, 0);
-        if(res.size()>1){
-            return false;
-        }
-        return true;
+        return is;
     }
 };
 
