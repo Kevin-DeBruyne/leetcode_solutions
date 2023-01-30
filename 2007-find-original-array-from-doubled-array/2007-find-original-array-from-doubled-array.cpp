@@ -16,19 +16,20 @@ public:
                 continue;
             }
             else{
-                if(!mp.count(changed[i]*2)){
+                if(mp[changed[i]*2]==0){
                     return {};
                 }
                 else{
+                    cout<<mp[changed[i]*2]<<endl;
                     vec.push_back(changed[i]);
                     mp[changed[i]]--;
                     mp[changed[i]*2]--;
-                    if(mp[changed[i]]<0){
-                        return {};
-                    }
-                    if(mp[changed[i]*2]<0){
-                        return {};
-                    }
+                    // if(mp[changed[i]]<0){
+                    //     return {};
+                    // }
+                    // if(mp[changed[i]*2]<0){
+                    //     return {};
+                    // }
                 }
             }
         }
