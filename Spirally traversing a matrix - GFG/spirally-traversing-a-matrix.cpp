@@ -10,33 +10,33 @@ class Solution
     vector<int> spirallyTraverse(vector<vector<int> > matrix, int r, int c) 
     {
         vector<int>res;
-        int d=1;int l=0;int t=0;int b=r-1;
-        c--;
-        while(l<=c && t<=b){
+        int d=1;int l=0;int t=0;int b=r;
+        // c--;
+        while(l<c && t<b){
             if(d==1){
-                for(int i=l;i<=c;i++){
+                for(int i=l;i<c;i++){
                     res.push_back(matrix[t][i]);
                 }
                     t++;
                     d=2;
             }
             else if(d==2){
-                for(int i=t;i<=b;i++){
-                    res.push_back(matrix[i][c]);
+                for(int i=t;i<b;i++){
+                    res.push_back(matrix[i][c-1]);
                 }
                     c--;
                     d=3;
             }
             else if(d==3){
-                for(int i=c;i>=l;i--){
-                    res.push_back(matrix[b][i]);
+                for(int i=c-1;i>=l;i--){
+                    res.push_back(matrix[b-1][i]);
                 }
                     b--;
                     d=4;
             
             }
             else if(d==4){
-                for(int i=b;i>=t;i--){
+                for(int i=b-1;i>=t;i--){
                     res.push_back(matrix[i][l]);
                 }
                     l++;
