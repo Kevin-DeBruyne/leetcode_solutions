@@ -11,21 +11,21 @@
  */
 class Solution {
 public:
-    vector<int>vec;
     int ans=INT_MAX;
+    TreeNode* pre;
     void dfs(TreeNode* root){
         if(root==NULL){
             return;
         }
         dfs(root->left);
-        vec.push_back(root->val);
+        if(pre!=NULL){
+            ans=min(ans, abs(pre->val-root->val));
+        }
+        pre=root;
         dfs(root->right);
     }
     int minDiffInBST(TreeNode* root) {
         dfs(root);
-        for(int i=0;i<vec.size()-1;i++){
-            ans=min(ans, abs(vec[i+1]-vec[i]));
-        }
         return ans;
     }
 };
