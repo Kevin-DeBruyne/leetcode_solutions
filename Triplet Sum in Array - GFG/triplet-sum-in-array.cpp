@@ -21,7 +21,6 @@ class Solution{
                     st.insert(A[j]);
                 }
             }
-            st.insert(A[i]);
         }
         return false;
     }
