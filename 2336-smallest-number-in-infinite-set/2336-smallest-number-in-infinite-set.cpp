@@ -1,31 +1,23 @@
 class SmallestInfiniteSet {
 public:
-    vector<int> mp;
+    map<int,bool>mp;
     SmallestInfiniteSet() {
-        mp.resize(1001,1);
+
     }
-    
     int popSmallest() {
-        // for(auto x:mp){
-        //     if(x==true){
-        //         int temp;
-        //         temp=x.first;
-        //         mp[x.first]=false;
-        //         break;
-        //     }
-        // }
-        int i;
-        for(i=1;i<=1000;i++){
-            if(mp[i]==1){
-                mp[i]=0;
+        int i=1;
+        while(true){
+            if(mp.find(i)==mp.end() || mp[i]==false){
                 break;
             }
+            i++;
         }
+        mp[i]=true;
         return i;
     }
     void addBack(int num) {
-        if(mp[num]==0){
-            mp[num]=1;
+        if(mp[num]==true){
+            mp[num]=false;
         }
     }
 };
