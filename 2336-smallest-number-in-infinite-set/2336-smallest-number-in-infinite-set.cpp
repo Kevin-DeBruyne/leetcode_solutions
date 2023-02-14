@@ -7,7 +7,7 @@ public:
     int popSmallest() {
         int i=1;
         while(true){
-            if(mp.find(i)==mp.end() || mp[i]==false){
+            if(mp[i]==false){
                 break;
             }
             i++;
