@@ -1,24 +1,23 @@
 class SmallestInfiniteSet {
 public:
-    map<int,bool>mp;
+    int cur;
+    set<int> s;
     SmallestInfiniteSet() {
-
+        cur=1;
     }
+    
     int popSmallest() {
-        int i=1;
-        while(true){
-            if(mp[i]==false){
-                break;
-            }
-            i++;
+        if(s.size()){
+            int res=*s.begin(); s.erase(res);
+            return res;
+        }else{
+            cur+=1;
+            return cur-1;
         }
-        mp[i]=true;
-        return i;
     }
+    
     void addBack(int num) {
-        if(mp[num]==true){
-            mp[num]=false;
-        }
+        if(cur>num) s.insert(num);
     }
 };
 
