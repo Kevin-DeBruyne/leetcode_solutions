@@ -13,25 +13,17 @@ class Solution {
 public:
     vector<int>vec1;
     vector<int>vec2;
-    void dfs(TreeNode* root){
+    void dfs(TreeNode* root, vector<int>vec){
         if(root==NULL){
             return;
         }
-        dfs(root->left);
+        dfs(root->left, vec);
         vec1.push_back(root->val);
-        dfs(root->right);
-    }
-    void dfs1(TreeNode* root){
-        if(root==NULL){
-            return;
-        }
-        dfs(root->left);
-        vec2.push_back(root->val);
-        dfs(root->right);
+        dfs(root->right, vec);
     }
     vector<int> getAllElements(TreeNode* root1, TreeNode* root2) {
-        dfs(root1);
-        dfs1(root2);
+        dfs(root1, vec1);
+        dfs(root2, vec2);
         for(auto x:vec1){
             vec2.push_back(x);
         }
