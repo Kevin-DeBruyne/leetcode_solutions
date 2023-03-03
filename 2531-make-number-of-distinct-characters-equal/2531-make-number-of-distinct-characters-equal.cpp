@@ -23,7 +23,6 @@ class Solution
                 t2=mp2;
                     if (t1[char(i + 97)] && t2[char(j + 97)])
                     {
-                        cout<<char(i+97)<<" "<<char(j+97)<<endl;
                         t1[char(i + 97)]--;
                         if(t1[char(i+97)]==0){
                             t1.erase(char(i+97));
@@ -34,7 +33,6 @@ class Solution
                         if(t2[char(j+97)]==0){
                             t2.erase(char(j+97));
                         }
-                        cout<<t1.size()<<" "<<t2.size()<<endl;
                         if (t1.size() == t2.size())
                         {
                             return true;
