@@ -23,9 +23,8 @@ public:
             for(int i=0;i<n;i++){
                 TreeNode* node=q.front();
                 q.pop();
-                cout<<node->val<<" ";
                 if(level%2==0){
-                    if(node->val%2!=0){
+                    if(node->val%2!=0 ){
                         return false;
                     }
                     if(node->val>=even){
@@ -53,7 +52,6 @@ public:
                     q.push(node->right);
                 }
             }
-                cout<<endl;
         }
         return true;
     }
