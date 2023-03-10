@@ -22,12 +22,8 @@ public:
             int odd=INT_MIN;
             for(int i=0;i<n;i++){
                 TreeNode* node=q.front();
-                q.pop();
                 if(level%2==0){
-                    if(node->val%2!=0 ){
-                        return false;
-                    }
-                    if(node->val>=even){
+                    if(node->val%2!=0 or (node->val>=even)){
                         return false;
                     }
                     else{
@@ -35,10 +31,7 @@ public:
                     }
                 }
                 else{
-                    if(node->val%2==0){
-                        return false;
-                    }
-                    if(node->val<=odd){
+                    if(node->val%2==0 or (node->val<=odd)){
                         return false;
                     }
                     else{
@@ -51,6 +44,7 @@ public:
                 if(node->right){
                     q.push(node->right);
                 }
+                q.pop();
             }
         }
         return true;
