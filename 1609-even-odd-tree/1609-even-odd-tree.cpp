@@ -23,7 +23,7 @@ public:
             for(int i=0;i<n;i++){
                 TreeNode* node=q.front();
                 if(level%2==0){
-                    if(node->val%2!=0 or (node->val>=even)){
+                    if((node->val&1) or (node->val>=even)){
                         return false;
                     }
                     else{
@@ -31,7 +31,7 @@ public:
                     }
                 }
                 else{
-                    if(node->val%2==0 or (node->val<=odd)){
+                    if((node->val&1)==0 or (node->val<=odd)){
                         return false;
                     }
                     else{
