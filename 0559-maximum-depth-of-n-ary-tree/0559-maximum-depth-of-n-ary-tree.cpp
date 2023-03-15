@@ -20,30 +20,32 @@ public:
 
 class Solution {
 public:
+    int height=1;
+    void dfs(Node* root, int h){
+        if(root==NULL){
+            return;
+        }
+        for(auto x:root->children){
+            cout<<h<<" ";
+            if(x){
+                dfs(x, h+1);
+                height=max(height, h);
+            }
+        }
+        
+    }
     int maxDepth(Node* root) {
         if(!root){
             return 0;
         }
-        queue<Node*>q;
-        q.push(root);
-        int lvl=0;
-        while(!q.empty()){
-            int n=q.size();
-            lvl++;
-            for(int i=0;i<n;i++){
-                Node* n=q.front();
-                q.pop();
-                for(auto x:n->children){
-                    if(x){
-                        q.push(x);
-                    }
-                }
-            }
+        if(!root->children.size()){
+            return 1;
         }
+        dfs(root, 1); 
         // for(auto x:root->children){
-        //     cout<<x->val<<endl;
-        // }        
-        return lvl;
+        //     cout<<x->val<<endl;   
+        // }
+        return height+1;
         
     }
 };
