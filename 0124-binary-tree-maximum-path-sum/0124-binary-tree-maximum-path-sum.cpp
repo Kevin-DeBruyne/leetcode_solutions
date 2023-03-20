@@ -18,13 +18,13 @@ public:
         }
         int left=max(0,help(root->left));
         int right=max(0,help(root->right));
-            maxi=max(maxi, root->val+left+right);
+        maxi=max(maxi, root->val+left+right);
         return root->val + max(left, right);
     }
     int maxPathSum(TreeNode* root) {
-        if(!root->left && !root->right && root->val<0){
-            return root->val;
-        }
+        // if(!root->left && !root->right && root->val<0){
+        //     return root->val;
+        // }
         help(root);
         return maxi;
     }
