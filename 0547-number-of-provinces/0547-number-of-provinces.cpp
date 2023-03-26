@@ -1,17 +1,10 @@
 class Solution {
 public:
-    void bfs(int n, vector<vector<int>>adj, vector<int>&vis){
-        queue<int>q;
-        q.push(n);
-        vis[n]=1;
-        while(!q.empty()){
-            int node=q.front();
-                q.pop();
-                for(auto x:adj[node]){
-                    if(vis[x]==0){
-                        vis[x]=1;
-                        q.push(x);
-                    }
+    void dfs(vector<int>& vis, int n, vector<vector<int>>& adj, int source){
+        vis[source]=1;
+        for(auto x:adj[source]){
+            if(!vis[x]){
+                dfs(vis, n, adj, x);
             }
         }
     }
@@ -26,18 +19,12 @@ public:
 				}
 			}
 		}
-        for(int i=0;i<n;i++){
-            for(auto y:adj[i]){
-                cout<<y<<" ";
-            }
-            cout<<endl;
-        }
         vector<int> vis(n, 0);
         int ans=0;
         for(int i=0;i<n;i++){
             if(vis[i]==0){
                 ans++;
-                bfs(i, adj,vis);
+                dfs(vis,n,adj,i);
             }
         }
         return ans;
