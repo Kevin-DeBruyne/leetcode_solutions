@@ -1,6 +1,6 @@
 class Solution {
 public:
-    void bfs(int n, vector<int>adj[], vector<int>&vis){
+    void bfs(int n, vector<vector<int>>adj, vector<int>&vis){
         queue<int>q;
         q.push(n);
         vis[n]=1;
@@ -17,7 +17,7 @@ public:
     }
     int findCircleNum(vector<vector<int>>& isConnected) {
         int n=isConnected.size();
-		vector<int>adj[n];
+		vector<vector<int>>adj(n);
 		for(int i=0; i<n; i++){
 			for(int j=0; j<n; j++){
 				if(isConnected[i][j]==1 && i!=j){
@@ -26,6 +26,12 @@ public:
 				}
 			}
 		}
+        for(auto x:adj){
+            for(auto y:x){
+                cout<<y<<" ";
+            }
+            cout<<endl;
+        }
         vector<int> vis(n, 0);
         int ans=0;
         for(int i=0;i<n;i++){
