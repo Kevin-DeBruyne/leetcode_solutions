@@ -1,10 +1,10 @@
 class Solution {
 public:
-    void dfs(vector<int>& vis, int n, vector<vector<int>>& adj, int source){
+    void dfs(vector<int>& vis, vector<vector<int>>& adj, int source){
         vis[source]=1;
         for(auto x:adj[source]){
             if(!vis[x]){
-                dfs(vis, n, adj, x);
+                dfs(vis,adj, x);
             }
         }
     }
@@ -24,7 +24,7 @@ public:
         for(int i=0;i<n;i++){
             if(vis[i]==0){
                 ans++;
-                dfs(vis,n,adj,i);
+                dfs(vis,adj,i);
             }
         }
         return ans;
