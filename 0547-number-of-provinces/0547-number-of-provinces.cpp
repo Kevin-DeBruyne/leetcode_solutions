@@ -26,8 +26,8 @@ public:
 				}
 			}
 		}
-        for(auto x:adj){
-            for(auto y:x){
+        for(int i=0;i<n;i++){
+            for(auto y:adj[i]){
                 cout<<y<<" ";
             }
             cout<<endl;
