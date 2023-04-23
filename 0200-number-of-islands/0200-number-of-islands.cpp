@@ -1,29 +1,39 @@
 class Solution {
 public:
-    void dfs(vector<vector<char>>& grid, int i, int j, vector<vector<int>> &vis){
-        if(i<0 || j<0 || i>=grid.size() || j>=grid[0].size() || grid[i][j]=='0' || vis[i][j]==1){
+    void dfs(int i, int j, vector<vector<char>>&grid, vector<vector<int>>&vis){
+        int M=grid.size();
+        int N=grid[0].size();
+        if(i<0 || j<0 || i>=M || j>=N){
             return;
-        }    
+        }
+        if(vis[i][j]==1 || grid[i][j]=='0'){
+            return;
+        }
         vis[i][j]=1;
-        dfs(grid, i-1, j, vis);
-        dfs(grid, i, j+1, vis);
-        dfs(grid, i, j-1, vis);
-        dfs(grid, i+1, j, vis);
+        dfs(i+1, j, grid, vis);
+        dfs(i, j+1, grid, vis);
+        dfs(i-1, j, grid, vis);
+        dfs(i, j-1, grid, vis);
     }
     int numIslands(vector<vector<char>>& grid) {
-        // bool vis[grid.size()][grid[0].size()]={{false}};
-        int n=grid.size();
-        int m=grid[0].size();
-        vector<vector<int>>vis(n, vector<int>(m,0));
-        int count=0;
-        for(int i=0;i<grid.size();i++){
-            for(int j=0;j<grid[0].size();j++){
+        int M=grid.size();
+        int N=grid[0].size();
+        vector<vector<int>> vis( M , vector<int> (N, 0)); 
+        // for(auto x:vis){
+        //     for(auto y:x){
+        //         cout<<y<<" ";
+        //     }
+        //     cout<<endl;
+        // }
+        int res=0;
+        for(int i=0;i<M;i++){
+            for(int j=0;j<N;j++){
                 if(grid[i][j]=='1' && vis[i][j]==0){
-                    dfs(grid, i ,j, vis);
-                    count++;
+                    dfs(i, j, grid, vis);
+                    res++;
                 }
             }
         }
-    return count;
+        return res;
     }
 };
