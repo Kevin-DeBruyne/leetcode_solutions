@@ -1,11 +1,8 @@
 class Solution {
 public:
-            vector<vector<int>>vis;
-        int m;
-        int n;
-            int cnt=0;
-            int best=0;
-    void dfs(int i, int j, vector<vector<int>>& grid, int val){
+    void dfs(int i, int j, vector<vector<int>>& grid, vector<vector<int>>& vis, int val, int cnt, int& best){
+        int m=grid.size();
+        int n=grid[0].size();
         if(i<0 || j<0 || i>=m || j>=n || vis[i][j]==1 || grid[i][j]<=val){
             return;
         }
@@ -16,26 +13,22 @@ public:
         // cout<<val<<" : "<< cnt << " : " ;
         best=max(best, cnt);
         // cout << best<< "--";
-        if(i-1>=0 and j+1<n)
-        dfs(i-1, j+1, grid, val);
-        if(j+1<n)
-        dfs(i, j+1, grid, val);
-        if(i+1<m and j+1<n)
-        dfs(i+1, j+1, grid, val);
+        dfs(i-1, j+1, grid, vis, val, cnt, best);
+        dfs(i, j+1, grid, vis, val, cnt, best);
+        dfs(i+1, j+1, grid, vis, val, cnt, best);
         vis[i][j]=0;
-        cnt--;
     }
     int maxMoves(vector<vector<int>>& grid) {
-        m=grid.size();
-        n=grid[0].size();
-        vis.resize(m,vector<int>(n,0));
+        int m=grid.size();
+        int n=grid[0].size();
         int maxi=0;
-        for(int i=0;i<m;i++){
+        vector<vector<int>>vis(m,vector<int>(n,0));
+        for(int i=0;i<grid.size();i++){
             int val=0;
-            cnt=0;
-            best=0;
+            int cnt=0;
+            int best=0;
             // cout<<grid[i][0]<<endl;
-            dfs(i, 0, grid,val);
+            dfs(i, 0, grid, vis, val, cnt,best);
             // cout<<endl;
             maxi=max(best-1, maxi);
         }
