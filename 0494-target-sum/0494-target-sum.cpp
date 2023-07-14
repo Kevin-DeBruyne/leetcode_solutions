@@ -23,10 +23,9 @@ public:
         int t=(target+sum)/2;
         int n=nums.size();
         
-        if(sum-target<0 || (target+sum)%2==1) return 0;
+        if((target+sum)%2==1) return 0;
         if (t<0) return 0;
         vector<vector<int>>dp(21, vector<int>(20001,-1));
-        // return help(nums, t, n-1);
         return help(nums, t, n-1, dp);
     }
 };
