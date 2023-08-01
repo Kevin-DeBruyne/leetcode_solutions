@@ -1,26 +1,33 @@
 class Solution {
 public:
     int dp[1001][1001];
-    int lcs(string &s, string &r ,int l1, int l2){
-        if(l1==0 || l2==0){
-            return 0;
-        }
-        if(dp[l1-1][l2-1]!=-1){
-            return dp[l1-1][l2-1];
-        }
-        if(s[l1-1]==r[l2-1]){
-            return dp[l1-1][l2-1]=1+lcs(s, r, l1-1, l2-1);
-        }
-        else{
-            return dp[l1-1][l2-1]=max(lcs(s, r ,l1-1, l2),lcs(s, r, l1, l2-1));
-        }
-    }
     int longestPalindromeSubseq(string s) {
+        int t1=s.size();
         string r=s;
         reverse(r.begin(), r.end());
-        int l1=s.length();
-        int l2=r.length();
-        memset(dp, -1, sizeof(dp));
-        return lcs(s, r, l1, l2);
+        int t2=r.size();
+        memset(dp, -1,sizeof(dp));
+        for(int i=0;i<t1;i++){
+            for(int j=0;j<t2;j++){
+                if(i==0 || j==0){
+                    dp[i][j]=0;
+                }
+            }
+        }
+        for(int i=1;i<t1+1;i++){
+            for(int j=1;j<t2+1;j++){
+                if(s[i-1]==r[j-1]){
+                    dp[i][j]=1+dp[i-1][j-1];
+                }
+                else{
+                    dp[i][j]=max(dp[i-1][j], dp[i][j-1]);
+                }          
+            }
+        }
+        if(dp[t1][t2]==-1){
+            return 0;
+        }
+        return dp[t1][t2];
     }
+    
 };
